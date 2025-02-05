@@ -1,9 +1,12 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faCloudSun,faWind,faList,faMap,faSliders } from '@fortawesome/free-solid-svg-icons';
+import { faHeart,faCloudSun,faWind,faList,faMap,faSliders } from '@fortawesome/free-solid-svg-icons';
 import './leftsidebar.css'
 import { Link } from 'react-router-dom';
 
 const LeftSidebar = ()=>{
+
+    
+
     return (
         <div className="left-sidebar">
             <div className='main-app-icon'>
@@ -12,14 +15,16 @@ const LeftSidebar = ()=>{
             <ul className='left-side-bar-icons'>
                 <Link to="/" style={{textDecoration:'None'}}>
                 <li>
-                <FontAwesomeIcon color='black' className='icons1' icon={faCloudSun} />
+                    <FontAwesomeIcon color='black' className='icons1' icon={faCloudSun} />
                     <p>Whether</p>
                     </li></Link>
+                <Link to="/cities" style={{textDecoration:'None'}}>
                 <li><FontAwesomeIcon color='black' className='icons2' icon={faList} />
-                    <p>Cities</p></li>
+                    <p>Cities</p></li></Link>
                 <li><FontAwesomeIcon color='black' className='icons3' icon={faMap}/><p>Map</p></li>
                 <li><FontAwesomeIcon color='black' className='icons4' icon={faSliders}/><p>Settings</p></li>
             </ul>
+                {/* <FontAwesomeIcon icon={faHeart} size="3x" color={isFavorited ? 'red' : 'gray'} spin /> */}
         </div>
     )
 }

@@ -1,6 +1,15 @@
+.right{
+    margin-top: 3vh;
+}
+
+.fav-icon button{
+    border: none;
+    cursor: pointer;
+}
+
 .right-side-bar{
     height: 83.86vh;
-    margin-top: 13.14vh;
+    margin-top: 3vh;
     margin-bottom: 3vh;
     background-color: white;
     width: 62vh;

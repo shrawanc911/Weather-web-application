@@ -1,10 +1,12 @@
 import './rightsidebar.css'
 import {useEffect, useState} from 'react'
-const RightSideBar = ()=>{
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+const RightSideBar = ({favLoc,setFavLoc,updateLocation,location})=>{
 
     const [forcastWether,setForcastWether] = useState(null);
-    let dayIndex = 0
     const [day,setDay] = useState(null);
+    const [isFavourite,setFavourite] = useState(false);
 
     const weatherDescriptions = {
         0: "Clear Sky",
@@ -97,24 +99,50 @@ const RightSideBar = ()=>{
         setDay(temp)
     }
 
-    const fetchForecastData = async()=>{
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(async (position) => {
-                    const { latitude, longitude } = position.coords;
+    const fetchForecastData = async(latitude,longitude)=>{
                     const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto`)
                     const data = await response.json()
-                    console.log(data)
+                    // console.log(data)
                     setForcastWether(data)
-            })
+            
         }
-
-    }
 
     useEffect(()=>{
         setDayFor7Day()
-        fetchForecastData()
-    },[])
-    return (
+        fetchForecastData(location.latitude,location.longitude)
+        if(favLoc){
+            checkFavourite(location.latitude,location.longitude)
+        }
+    },[location])
+
+    const checkFavourite = (lat,lon)=>{
+        try{
+            setFavourite(favLoc.some(loc => loc[0] === lat && loc[1] === lon))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    const toggleFavourite = ()=>{
+        setFavourite(!isFavourite)
+        if(isFavourite){
+            let a = favLoc
+            let b = a.filter((el)=> el[0]!==location.latitude && el[1]!==location.longitude)
+            setFavLoc(b)
+        }else{
+            let a = favLoc
+            a.push([location.latitude,location.longitude])
+            setFavLoc(a)
+        }
+    }
+    
+    return (<>
+    <div className="right">
+        <div className="fav-icon">
+            <button onClick={toggleFavourite}>
+            <FontAwesomeIcon icon={faHeart} size="3x" color={isFavourite ? 'red' : 'gray'} spin={isFavourite} />
+            </button>
+            </div>
         <div className="right-side-bar">
             <div className="right-side-bar-main">
                 <p>7 - DAY FORCAST</p>
@@ -132,6 +160,8 @@ const RightSideBar = ()=>{
                 })}
             </div>
         </div>
+        </div>
+        </>
     )
 }
 
