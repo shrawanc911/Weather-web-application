@@ -1,0 +1,12 @@
+*{
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  background-color:rgba(12,20,29,255);
+}
+
+.homepage{
+  display: flex;
+  flex-direction: row;
+  gap: 3vh;
+}

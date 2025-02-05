@@ -1,0 +1,79 @@
+.main-icons{
+    font-size: 20px;
+    background-color: inherit;
+    color: rgba(85,127,169,255);
+  }
+  
+  .icons1{
+    font-size: 15px;
+    background-color: inherit;
+    color: rgba(232,237,247,255);
+  } 
+  
+  .icons2{
+    font-size: 15px;
+    background-color: inherit;
+    /* color: rgba(72,83,100,255); */
+    color: rgba(89,100,117,255);
+  } 
+  
+  .icons3{
+    font-size: 15px;
+    background-color: inherit;
+    /* color: rgba(72,83,100,255); */
+    color: rgba(89,100,117,255);
+  } 
+  .icons4{
+    font-size: 15px;
+    background-color: inherit;
+    /* color: rgba(72,83,100,255); */
+    color: rgba(89,100,117,255);
+  } 
+  
+  .left-sidebar{
+    height: 94vh;
+    width: 10vh;
+    background-color:rgba(32,43,60,255);
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    margin-top: 3vh;
+    margin-left: 3vh;
+    border-radius: 15px;
+    align-items: center;
+  }
+  
+  .main-app-icon{
+    width: 70%;
+    height: 40px;
+    margin-top: 15px;
+    background-color: rgba(51,68,86,255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    color: white;
+  }
+  
+  .left-side-bar-icons{
+    list-style: none;
+    margin-top: 2rem;
+    padding: 0;
+    background-color:rgba(32,43,60,255);
+  }
+  
+  .left-side-bar-icons li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    background-color:rgba(32,43,60,255);
+  }
+  
+  .left-side-bar-icons li p {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    text-align: center;
+    background-color: inherit;
+    color: rgba(89,100,117,255);
+  }

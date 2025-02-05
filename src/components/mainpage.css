@@ -1,0 +1,161 @@
+
+.mainpart{
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.search{
+    color: white;
+    height: 6vh;
+    width: 125vh;
+    display: flex;
+    align-items: center;
+    background-color:rgba(32,43,60,255);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.search p {
+    background-color: inherit;
+    padding: 10px;
+}
+
+.whether-part{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 4vh 8vh;
+}
+
+.whether-part-data-p1{
+    font-size: 28px;
+    color: rgba(232,237,247,255);
+}
+
+.whether-part-data-p2{
+    margin-top: 1vh;
+    color: rgba(89,100,117,255);
+}
+
+.whether-part-data-p3{
+    margin-top: 5vh;
+    font-size: 38px;
+    color: rgba(232,237,247,255);
+}
+
+.forcast{
+    background-color:rgba(32,43,60,255);
+    height: 26vh;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.forcast-header{
+    background-color:rgba(32,43,60,255);
+    margin: 2vh 5vh;
+}
+
+.forcast-header p{
+    background-color:rgba(32,43,60,255);
+}
+
+.forcast-data{
+    background-color:rgba(32,43,60,255);
+    margin: 2vh 5vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.forcast-data-d{
+    background-color:rgba(32,43,60,255);
+    border-right: 1px solid rgb(99, 94, 94);
+    height: 14vh;
+    width: 17vh;
+    text-align: center;
+    color: rgba(89,100,117,255);
+}
+
+.degree{
+    color: rgba(232,237,247,255);
+    font-size: 1.2em;
+}
+p{
+    background-color: inherit;
+}
+
+img{
+    background-color: inherit;
+}
+
+#forcast-data-10{
+    border: none;
+}
+#forcast-data-22{
+    border: none;
+}
+
+.airconditions-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 2vh 5vh;
+    background-color: inherit;
+}
+.airconditions-header p{
+    margin: 0;
+    background-color:rgba(32,43,60,255);
+    color: rgba(89,100,117,255);
+}
+.airconditions-header button{
+    margin: 0;
+    background:rgba(4,149,245,255);
+    border: none;
+    color: white;
+    border-radius: 10px;
+    padding: 2px 7px;
+    
+}
+
+.airconditions{
+    margin-top: 2vh;
+    background-color: rgba(32,43,60,255);
+    height: 30vh;
+    border-radius: 15px;
+}
+
+.airconditions-data{
+    margin-left: 50px;
+    display: grid;
+    grid-template-columns: auto auto;
+    align-content: center;
+    background-color: rgba(32,43,60,255);
+}
+
+.head{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgba(32,43,60,255);
+}
+
+.head>p{
+    margin-left: 10px;
+}
+
+.airconditions-data-r>p{
+    margin-left: 45px;
+    background-color: rgba(32,43,60,255);
+    color: white;
+    font-size: 25px;
+}
+
+.airconditions-data-r{
+    background-color: rgba(32,43,60,255);
+}
+
+.air-info{
+    color: rgba(89,100,117,255);    
+}
