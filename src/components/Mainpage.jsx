@@ -11,7 +11,6 @@ const MainPage = ()=>{
     
     const whetherIcon = (code)=>{
         
-        const a = new Date().toLocaleTimeString();
         const hours = new Date().getHours();
         const link = (hours >= 18 || hours < 6) ? 'Night' : 'Day';
         switch (code) {
@@ -103,7 +102,7 @@ const MainPage = ()=>{
                 
     function calculateWindChill(tempC, windSpeed) {
         if (tempC > 10 || windSpeed < 4.8) return tempC; 
-            return 13.12 + 0.6215 * tempC - 11.37 * windSpeed ** 0.16 + 0.3965 * tempC * windSpeed ** 0.16;
+        return 13.12 + 0.6215 * tempC - 11.37 * windSpeed ** 0.16 + 0.3965 * tempC * windSpeed ** 0.16;
     }
                 
     function calculateRealFeel(temperature, humidity, windSpeed) {
@@ -117,8 +116,8 @@ const MainPage = ()=>{
                    
 
     const getSlicingIndex = ()=>{
-        const a = new Date().toLocaleTimeString();
-        if((a[0]>6 && a.slice(8,10)==="pm") || (a[0]<6 && a.slice(8,10)==="am")){
+        const a = new Date().getHours();
+        if(a<12){
             return [0,12]
         }else{
             return [12,24]
@@ -142,11 +141,10 @@ const MainPage = ()=>{
     
     useEffect(()=>{
         fetchWhetherData()
-        fetchForecastData()
     },[])
     
-    const fetchForecastData = async () => {
-        const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=25.2933&longitude=91.5777&current=wind_speed_10m&hourly=temperature_2m,rain,weather_code,relative_humidity_2m,wind_speed_10m,precipitation_probability,precipitation,cloud_cover&daily=uv_index_max&timezone=auto`);
+    const fetchForecastData = async (latitude,longitude) => {
+        const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=wind_speed_10m&hourly=temperature_2m,rain,weather_code,relative_humidity_2m,wind_speed_10m,precipitation_probability,precipitation,cloud_cover&daily=uv_index_max&timezone=auto&forecast_days=1`);
         const data = await response.json();
         console.log("This is data",data);
         setForcastWhether(data)
@@ -164,6 +162,7 @@ const MainPage = ()=>{
                     fetchCity(latitude,longitude);
                     let temperature = Math.round(data.main.temp - 273.12)
                     setTemperature(temperature)
+                    fetchForecastData(latitude,longitude)
                 })
         }
     }
@@ -180,14 +179,15 @@ const MainPage = ()=>{
                         {cityName}
                     </p>
                     <p className="whether-part-data-p2">
-                        Chance of rain: {calculateChanceOfRain(forcastWhether.hourly.precipitation_probability[index],forcastWhether.hourly.relative_humidity_2m[index],forcastWhether.hourly.cloud_cover[index],forcastWhether.hourly.weather_code[index])}
+                        Chance of rain: {forcastWhether && forcastWhether.hourly && calculateChanceOfRain(forcastWhether.hourly.precipitation_probability[index],forcastWhether.hourly.relative_humidity_2m[index],forcastWhether.hourly.cloud_cover[index],forcastWhether.hourly.weather_code[index])}
                     </p>
                     <p className="whether-part-data-p3">
                     {temperature}°C
                     </p>
                 </div>
                 <div className="whether-part-icon">
-                    <img src="/images/Day/95.png" alt="whether icon" height="138px" width="138px" />
+                {forcastWhether && forcastWhether.hourly && 
+                    <img src={`/images/${whetherIcon(forcastWhether.hourly.weather_code[index])}.png`} alt="whether icon" height="138px" width="138px" />}
                 </div>
             </div>
             <div className="forcast">
@@ -207,36 +207,6 @@ const MainPage = ()=>{
                             );
                     }
                     })}
-                    {/* <div id="forcast-data-2" className='forcast-data-d'>
-                    <p>8:00 AM</p>
-                        <img src="/images/Day/cloudsun2.png" alt="image" height="50px" width="50px" />
-                        <p className='degree'>25</p>
-                    </div>
-                    <div id="forcast-data-3" className='forcast-data-d'>
-                    <p>10:00 AM</p>
-                        <img src="/images/Day/raining.png" alt="image" height="50px" width="50px" />
-                        <p className='degree'>25</p>
-                    </div>
-                    <div id="forcast-data-4" className='forcast-data-d'>
-                    <p>12:00 PM</p>
-                        <img src="/images/Day/cloud.png" alt="image" height="50px" width="50px" />
-                        <p className='degree'>25</p>
-                    </div>
-                    <div id="forcast-data-5" className='forcast-data-d'>
-                    <p>2:00 PM</p>
-                        <img src="/images/Day/sunwithrain.png" alt="image" height="50px" width="50px" />
-                        <p  className='degree'>25</p>
-                    </div>
-                    <div id="forcast-data-6" className='forcast-data-d'>
-                    <p>4:00 PM</p>
-                        <img src="/images/Day/sunwithrain.png" alt="image" height="50px" width="50px" />
-                        <p  className='degree'>25</p>
-                    </div>
-                    <div id="forcast-data-7" className='forcast-data-d'>
-                    <p>6:00 PM</p>
-                        <img src="/images/Day/sun2.png" alt="image" height="50px" width="50px" />
-                        <p  className='degree'>25</p>
-                    </div> */}
                 </div>
             </div>
             <div className="airconditions">
@@ -250,14 +220,14 @@ const MainPage = ()=>{
                         <img src="/images/thermometer.png" alt="image" height="30px" width="30px" />
                         <p className='air-info'>Real Feel</p>
                         </div>
-                        {forcastWhether && forcastWhether.hourly && <p>{calculateRealFeel(forcastWhether.hourly.temperature_2m[index],forcastWhether.hourly.relative_humidity_2m[index],forcastWhether.hourly.wind_speed_10m[index])}</p>}
+                        {forcastWhether && forcastWhether.hourly && <p>{Math.ceil(calculateRealFeel(forcastWhether.hourly.temperature_2m[index],forcastWhether.hourly.relative_humidity_2m[index],forcastWhether.hourly.wind_speed_10m[index]))}</p>}
                     </div>
                     <div className="airconditions-data-r">
                     <div className="head">
                     <img src="/images/wind.png" alt="image" height="30px" width="30px" />
                     <p className='air-info'>Wind</p>
                     </div>
-                    {forcastWhether && forcastWhether.hourly && <p>{forcastWhether.hourly.wind_speed_10m[index]} km/h</p>}
+                    {forcastWhether && forcastWhether.hourly && <p>{forcastWhether.current.wind_speed_10m} km/h</p>}
                     </div>
                     <div className="airconditions-data-r">
                     <div className="head">

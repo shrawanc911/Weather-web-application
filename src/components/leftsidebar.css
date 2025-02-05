@@ -68,6 +68,7 @@
     align-items: center;
     margin-bottom: 1.5rem;
     background-color:rgba(32,43,60,255);
+    cursor: pointer;
   }
   
   .left-side-bar-icons li p {
