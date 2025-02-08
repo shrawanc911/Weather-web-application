@@ -2,7 +2,7 @@ import './rightsidebar.css'
 import {useEffect, useState} from 'react'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-const RightSideBar = ({favLoc,setFavLoc,updateLocation,location})=>{
+const RightSideBar = ({searchCityName,favStatus,setFavStatus,setSearchCityName,favCity, setFavCity, favLoc,setFavLoc,updateLocation,location})=>{
 
     const [forcastWether,setForcastWether] = useState(null);
     const [day,setDay] = useState(null);
@@ -126,13 +126,29 @@ const RightSideBar = ({favLoc,setFavLoc,updateLocation,location})=>{
     const toggleFavourite = ()=>{
         setFavourite(!isFavourite)
         if(isFavourite){
-            let a = favLoc
-            let b = a.filter((el)=> el[0]!==location.latitude && el[1]!==location.longitude)
-            setFavLoc(b)
+            let index = favLoc.findIndex(el => el[0] === location.latitude && el[1] === location.longitude);
+            let updatedFavLoc = [...favLoc];
+            let updatedFavCity = [...favCity];
+            let updatedFavStatus = [...favStatus];
+
+            updatedFavLoc.splice(index, 1);  
+            updatedFavCity.splice(index, 1);  
+            updatedFavStatus.splice(index, 1);
+            setFavLoc(updatedFavLoc)
+            setFavCity(updatedFavCity)
+            setFavStatus(updatedFavStatus)
+            console.log(updatedFavStatus)
         }else{
             let a = favLoc
+            let c = favCity
+            let e = favStatus
             a.push([location.latitude,location.longitude])
+            c.push(searchCityName)
+            e.push(true)
             setFavLoc(a)
+            setFavCity(c)
+            setFavStatus(e)
+            console.log(e)
         }
     }
     
@@ -140,7 +156,7 @@ const RightSideBar = ({favLoc,setFavLoc,updateLocation,location})=>{
     <div className="right">
         <div className="fav-icon">
             <button onClick={toggleFavourite}>
-            <FontAwesomeIcon icon={faHeart} size="3x" color={isFavourite ? 'red' : 'gray'} spin={isFavourite} />
+            <FontAwesomeIcon className='font-icon-fav' icon={faHeart} size="3x" color={isFavourite ? 'red' : 'gray'} spin={isFavourite} />
             </button>
             </div>
         <div className="right-side-bar">

@@ -1,9 +1,9 @@
 import CityMainPage from "./CityMainPage"
 
-const CityPage = ({favLocation,setFavLocation})=>{
+const CityPage = ({favStatus,setFavStatus,favCity,setFavCity,favLocation,setFavLocation})=>{
     return (
         <>
-            <CityMainPage favLoc={favLocation} setFavLoc={setFavLocation}/>
+            <CityMainPage favStatus={favStatus} setFavStatus={setFavStatus} favCity={favCity} setFavCity={setFavCity} favLoc={favLocation} setFavLoc={setFavLocation}/>
         </>
     )
 }

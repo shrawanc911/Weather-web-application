@@ -2,10 +2,13 @@
     margin-top: 3vh;
 }
 
-.fav-icon button{
-    border: none;
+.fav-icon, .fav-icon button{
+    all: unset ;
+    border: none !important;
     cursor: pointer;
+    background-color: inherit;
 }
+
 
 .right-side-bar{
     height: 83.86vh;

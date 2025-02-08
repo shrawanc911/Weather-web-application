@@ -12,6 +12,7 @@
     width: 125vh;
     border-radius: 8px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
   }
   
   .search input {
@@ -50,3 +51,82 @@
     background-color: #2980b9;
   }
   
+
+  .city-data{
+    background-color:rgba(32,43,60,255);
+    height: 20vh;
+    width: 125vh;
+    margin-bottom: 3vh;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    align-items: center;
+  }
+  .dynamic-city-data{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: inherit;
+  }
+
+
+  .city-data-image{
+    height: 100%;
+    background-color: inherit;
+    width: 18%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .city-data-data{
+    height: 100%;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: inherit;
+    gap: 0px;
+  }
+
+  .city-data-data-name{
+    margin: 0;
+    padding: 0;
+    font-size: 30px;
+    color: white;
+  }
+
+  .city-data-data-weather{
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    color: rgb(168, 168, 168);
+  }
+
+  .fav-icon{
+    height: fit-content;
+    width: 10%;
+    border: 1px solid white;
+    cursor: pointer;
+    background-color: inherit;
+}
+
+.fav-icon button{
+    background-color:inherit
+}
+
+
+.font-fav-icon{
+  background-color: inherit;
+}
+  .city-data-temperature{
+    height: 100%;
+    width: 12%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: white;
+    background-color: inherit;
+  }

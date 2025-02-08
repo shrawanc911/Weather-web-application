@@ -3,7 +3,7 @@ import './mainpage.css'
 import { faL } from '@fortawesome/free-solid-svg-icons';
 
 
-const MainPage = ({updateLocation,location})=>{
+const MainPage = ({updateLocation,location,searchCityName, setSearchCityName})=>{
     const [cityName,setCityName] = useState(null);
     const [temperature,setTemperature] = useState(null);
     const [forcastWhether,setForcastWhether] = useState(null);
@@ -25,8 +25,10 @@ const MainPage = ({updateLocation,location})=>{
             setCityName(city.charAt(0).toUpperCase() + city.slice(1).toLowerCase())
             const latitude = (Number(d[0].boundingbox[0]) + Number(d[0].boundingbox[1]))/2
             const longitude = (Number(d[0].boundingbox[2]) + Number(d[0].boundingbox[3]))/2
+            setSearchCityName(city.charAt(0).toUpperCase() + city.slice(1).toLowerCase())
             fetchWhetherData(latitude,longitude)
             updateLocation({latitude,longitude})
+
         }else{
             alert("Enter Correct City")
         }
@@ -189,6 +191,7 @@ const MainPage = ({updateLocation,location})=>{
             // console.log("FetchCity",data)
             const city = data.address.county.split(' ')
             setCityName(city[0]);
+            setSearchCityName(city[0]);
         } catch (error) {
             setError('Failed to fetch city information');
             console.error("Error fetching city:", error);

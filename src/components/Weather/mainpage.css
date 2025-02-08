@@ -57,7 +57,10 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 4vh 8vh;
+    margin-top: 4vh;
+    margin-left: 8vh;
+    margin-right: 8vh;
+    margin-bottom: 1vh;
 }
 
 .whether-part-data-p1{
