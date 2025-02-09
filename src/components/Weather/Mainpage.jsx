@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import './mainpage.css'
-import { faL } from '@fortawesome/free-solid-svg-icons';
 
 
 const MainPage = ({updateLocation,location,searchCityName, setSearchCityName})=>{
+    const api_key = import.meta.env.VITE_API_KEY
     const [cityName,setCityName] = useState(null);
     const [temperature,setTemperature] = useState(null);
     const [forcastWhether,setForcastWhether] = useState(null);
@@ -216,7 +216,7 @@ const MainPage = ({updateLocation,location,searchCityName, setSearchCityName})=>
     
     const fetchWhetherData = async(lat,lon)=>{
         if(l===false){
-            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=6f9b87f2a2d075bcaea69fad5bd0043d`)
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}`)
             const data = await response.json()
             fetchCity(lat,lon);
             let temperature = Math.round(data.main.temp - 273.12)
@@ -225,7 +225,7 @@ const MainPage = ({updateLocation,location,searchCityName, setSearchCityName})=>
                 
             
         }else{
-            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=6f9b87f2a2d075bcaea69fad5bd0043d`)
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}`)
             const data = await response.json()
             let temperature = Math.round(data.main.temp - 273.12)
             setTemperature(temperature)
