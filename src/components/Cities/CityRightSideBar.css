@@ -1,0 +1,126 @@
+.city-right{
+    width: 400px;
+    background-color: inherit;
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.city-right-main{
+    margin-top: 50px;
+    height: 140px;
+    width: 360px;
+    display: flex;
+    flex-direction: row;
+    background-color: inherit;
+    margin-top: 60px;
+    border-bottom: 1px rgba(89,100,117,255) solid;
+}
+
+.city-right-main-data{
+    width: 165px;
+    height: 100%;
+}
+
+.city-right-main-data-p1{
+    width: 100%;
+    font-size: 28px;
+    color: rgba(232,237,247,255);
+}
+
+.city-right-main-data-p2{
+    width: 100%;
+    margin-top: 1vh;
+    color: rgba(89,100,117,255);
+}
+
+.city-right-main-data-p3{
+    margin-top: 5vh;
+    font-size: 38px;
+    color: rgba(232,237,247,255);
+}
+
+.city-right-main-image{
+    margin-left: 60px;
+}
+
+.city-right-forcast{
+    height: 180px;
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px rgba(89,100,117,255) solid;
+}
+
+.city-right-forcast-data{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.city-right-forcast-data-d1{
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 1px rgba(89,100,117,255) solid;
+}
+
+.city-right-forcast-data-d1-p1{
+    margin-bottom: 10px;
+}
+.city-right-forcast-data-d1-p2{
+    margin-top: 10px;
+}
+
+#last-div-forcast{
+    border: none;
+}
+
+.city-right-3-day-forcast{
+    height: 180px;
+    width: 360px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.city-right-3-day-forcast-header{
+    height: 30px;
+}
+
+.city-right-3-day-forcast-data{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 180px;
+}
+
+.city-right-3-day-forcast-data-d1{
+    display: flex;
+    height: 40px;
+    border-bottom: 1px rgba(89,100,117,255) solid;
+}
+
+.city-right-3-day-forcast-data-p1{
+    width: 35%;
+}
+
+.city-right-3-day-forcast-data-img{
+    width: 20%;
+}
+
+.city-right-3-day-forcast-data-name{
+    width: 35%;
+}
+
+.city-right-3-day-forcast-data-p2{
+    width: 15%;
+}
+
+#last-3-day-forcast{
+    border: none;
+}
